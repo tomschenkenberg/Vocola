@@ -1,6 +1,7 @@
-# Voice commands for chrome
+include Unimacro.vch;
+# Voice commands for chrome, depends on Vimium Extension
 #
-# 
+ 
 go to <_anything>	= {ctrl+l} $1 {Enter};
 (address [bar] | adresbalk) = {ctrl+l};
 (copy address | clip URL )	= "yy";
@@ -18,21 +19,25 @@ go back = "H";
 go forward = "L";
 open URL ="O";
 help = "?";
-
+identificeren = "gewoon chrome";
 
 # GMail - Dutch Commands:
+# Vimium is disabled for gmail.com
+#
+Mail van:
+    identificeren = ''Mail app '';
+    (opstellen | nieuwe e-mail | nieuw bericht )	= "c";
+    map verzonden berichten 		= "gt";
+    (inbox | map inbox|inbox map)	= "gi";
+    map alle berichten 			= "ga";
+    (open e-mail | open bericht )	= "o";
+    [bericht] archiveren 			= "{";
+    [bericht] doorsturen			= "f";
+    allen beantwoorden                    = "a";
+    [bericht] beantwoorden		= "r";
+    (vorig bericht | vorige e-mail)				= "j";
+    (volgend bericht	| volgende e-mail)			= "k";
+    (bericht verwijderen| delete e-mail | verwijder bericht | e-mail verwijderen)	= "#";
+    (verzend e-mail | e-mail verzenden | bericht verzenden )	= {Ctrl+Enter};
 
-(opstellen | nieuwe e-mail )	= "c";
-map verzonden berichten 		= "gt";
-(inbox | map inbox|inbox map)	= "gi";
-map alle berichten 			= "ga";
-(open e-mail | open bericht )	= "o";
-[bericht] archiveren 			= "{";
-[bericht] doorsturen			= "f";
-allen beantwoorden                    = "a";
-[bericht] beantwoorden		= "r";
-vorig bericht				= "j";
-volgend bericht				= "k";
-
-(verzend e-mail | e-mail verzenden)	= {Ctrl+Enter};
 

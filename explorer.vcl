@@ -1,3 +1,4 @@
+include Unimacro.vch;
 # Voice commands for explorer
 
 one drive folder = 
