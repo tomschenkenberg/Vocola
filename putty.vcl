@@ -26,5 +26,6 @@ say yes = {Y}{Enter};
 # vim commands:
 #
 vim abandon = {Esc}:q!{Enter};
-(vim save and close | vim exit | vim quit)= {Esc}:wq!{Enter};
+(vim save and close | vim exit | vim quit)= {Esc} ":wq" {Enter};
+
 
