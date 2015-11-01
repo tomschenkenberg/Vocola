@@ -16,9 +16,11 @@ process tree = pstree{Enter};
 repeat = {Up}{Enter};
 go home = cd{Enter}clear{Enter}pwd{Enter}"ls -las"{Enter};
 edit secure shell = "vi /etc/ssh/sshd_config"{Enter};
-
+you name = 'uname -a'{Enter};
 update packages = "apt-get update"{Enter};
 upgrade packages = "apt-get upgrade"{Enter};
+upgrade distro = "apt-get dist-upgrade"{Enter};
+
 say yes = {Y}{Enter};
 
 
