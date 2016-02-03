@@ -1,3 +1,4 @@
+# vocola file for alternate language: nld
 # Voice commands for 1password
 #
 #
@@ -9,4 +10,5 @@ kopieer loginnaam = {Ctrl+b};
 kopieer wachtwoord = {Ctrl+Shift+c};
 
 kopieer = {Ctrl+c};
+
 

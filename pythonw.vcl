@@ -1,9 +1,0 @@
-# Voice commands for pythonw
-#
-#
-#
-
-
-
-
-

@@ -1,13 +1,24 @@
+# vocola file for alternate language: nld
 # Global voice commands
 #
-# English only
-#
 
-personal email = 'tom@schenkenberg.nl';
-(business email | work email | Ibuildings email) = 'tom@ibuildings.nl';
-my full name = 'Tom Schenkenberg';
-my phone number = '+31 6 11 600 692';
-open (1password|password manager) = ShellExecute("C:\Program Files (x86)\1Password 4\1Password.exe");
+(persoonlijke e-mail|personal email) 				= 'tom@schenkenberg.nl';
+(zakelijke e-mail|business email | work email | werk email | Ibuildings email) 	= 'tom@ibuildings.nl';
+(mijn volledige naam|my full name) 				= 'Tom Schenkenberg';
+(mijn telefoonnummer|my phone number) 				= '+31 6 11 600 692';
+
+DNS afsluiten            = SendSystemKeys( {NumKey*} ) Wait(100) e;
+spreekpauze = GoToSleep();
+
+# specifieke programma's openen:
+open (wachtwoordmanager|password manager) = ShellExecute("C:\Program Files (x86)\1Password 4\1Password.exe");
+open terminal = ShellExecute("E:\Program-Files\PuTTY\putty.exe") WaitForWindow("PuTTY Configuration*") Repeat(4, {Tab}) {Down};
+
+
+# schermopname maken via OneNote, en altijd naar clipboard kopiëren;
+# levert hetzelfde gedrag op als in OSX
+(maak schermopname | schermopname maken )= SendSystemKeys({Win+Shift+S}) WaitForWindow("Locatie selecteren in OneNote","",30000) Repeat(4,{Tab}) {Enter};
+
 
 Switch Window                        = SendSystemKeys( {Alt+Tab} );
 Copy and Switch                      = {Ctrl+a}{Ctrl+c} SendSystemKeys( {Alt+Tab} );
@@ -30,7 +41,7 @@ Window move <direction> <ns> = Repeat($2, SendSystemKeys({Win+$1}));
 <left_right> := Left | Right;
 <start_end> := (Start={Home} | End={End});
 <compass> := (North={Shift+Ctrl+Home} | South={Shift+Ctrl+End} |
- East={Shift+End} | West={Shift+Home});
+East={Shift+End} | West={Shift+Home});
 
 ### Characters
 # implemented elsewhere
@@ -61,8 +72,8 @@ Kill Back <n> Lines  = {home}{Shift+Up_$1}  {Shift+Home}{Del};
 Kill Here            = {Shift+End}{Del};
 Kill Back Here       = {Shift+Home}{Del};
 Duplicate Line       = {home}{Shift+Down}{Shift+Home}{Ctrl+c}{Home}{Ctrl+v};
-                    
-### Paragraphs        
+
+### Paragraphs
 Graph Start          = {Ctrl+Up}{Right}{Home};
 Graph End            = {Ctrl+Down}{Left_2}{End};
 (Paragraph|Graph) Here = {Enter}{Enter}{Left}{Left};
@@ -70,8 +81,8 @@ Open (Graph|Line)    = {Enter}{Enter}{Left};
 Copy Graph           = {Ctrl+Down}{Shift+Ctrl+Up}{Ctrl+c};
 Kill Graph           = {Ctrl+Down}{Shift+Ctrl+Up}{Del};
 Duplicate Graph      = {Ctrl+Down}{Shift+Ctrl+Up}{Ctrl+c}{Home}{Ctrl+v};
-                    
-### Entire "Flow"   
+
+### Entire "Flow"
 Flow Start           = {Ctrl+Home};
 Flow End             = {Ctrl+End};
 #New Line             = {Enter};
@@ -81,8 +92,8 @@ Copy All             = {Ctrl+a}{Ctrl+c};
 Kill Flow Here       = {Ctrl+Shift+End} {Ctrl+x};
 Kill Back Flow Here  = {Ctrl+Shift+Home}{Ctrl+x};
 Replace All          = {Ctrl+a}{Del}{Ctrl+v};
-                    
-### Selection         
+
+### Selection
 Kill That            = {Del};
 # implemented elsewhere
 #Cut That             = {Ctrl+x};
@@ -96,8 +107,9 @@ Select <compass>     = $1;
 ### Miscellaneous
 undo that <n> = {Ctrl+z_$1};
 Camel [Case] That = HeardWord(\Cap,That) HeardWord(compound,that) {Ctrl+Left}
-                    {Shift+Right} HeardWord(\No-Caps,That){Ctrl+Right};
+{Shift+Right} HeardWord(\No-Caps,That){Ctrl+Right};
 (Cap | Up Case) <n> = {Shift+Right_$2} HeardWord(\All-Caps,That);
 
-include keys.vch;
+include ..\keys.vch;
+
 
