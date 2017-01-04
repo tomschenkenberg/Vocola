@@ -38,7 +38,10 @@ Window move <direction> <ns> = Repeat($2, SendSystemKeys({Win+$1}));
 # Text Editing
 
 <direction>  := Left | Right | Up | Down;
+<richting>  := Links=Left | Rechts=Right | Omhoog=Up | Omlaag=Down;
+
 <left_right> := Left | Right;
+<links_rechts> := Links=Left | Rechts=Right;
 <start_end> := (Start={Home} | End={End});
 <compass> := (North={Shift+Ctrl+Home} | South={Shift+Ctrl+End} |
 East={Shift+End} | West={Shift+Home});
@@ -51,13 +54,15 @@ Kill Back [1]         = {Backspace};
 Kill <n>              = {Del_$1};
 [Kill] Back <n>       = {Backspace_$1};
 
-### Words
-[One] Word <left_right>= {Ctrl+$1};
-<n> Words <left_right> = {Ctrl+$2_$1};
-Kill Word              = {Right_2}{Ctrl+Left}{Shift+Ctrl+Right}   {Del};
-Kill <n> Words         = {Right_2}{Ctrl+Left}{Shift+Ctrl+Right_$1}{Del};
-Kill Back Word         = {Left}{Ctrl+Right}{Shift+Ctrl+Left}   {Del};
-Kill Back <n> Words    = {Left}{Ctrl+Right}{Shift+Ctrl+Left_$1}{Del};
+### Woorden
+
+[Een] Woord <links_rechts>= {Ctrl+$1};
+<n> Woorden <links_rechts> = {Ctrl+$2_$1};
+
+Kill (Word|Woord)              = {Right_2}{Ctrl+Left}{Shift+Ctrl+Right}   {Del};
+Kill <n> (Words|Woorden)         = {Right_2}{Ctrl+Left}{Shift+Ctrl+Right_$1}{Del};
+Kill Back (Word|Woord)         = {Left}{Ctrl+Right}{Shift+Ctrl+Left}   {Del};
+Kill Back <n> (Words|Woorden)    = {Left}{Ctrl+Right}{Shift+Ctrl+Left_$1}{Del};
 
 ### Lines
 Line <start_end>     = $1;
@@ -105,7 +110,9 @@ Keep That            = {Ctrl+c}{Ctrl+a}{Del}{Ctrl+v};
 Select <compass>     = $1;
 
 ### Miscellaneous
-undo that <n> = {Ctrl+z_$1};
+ZZ = {Ctrl+z};
+ZZ <n> = {Ctrl+z_$1};
+
 Camel [Case] That = HeardWord(\Cap,That) HeardWord(compound,that) {Ctrl+Left}
 {Shift+Right} HeardWord(\No-Caps,That){Ctrl+Right};
 (Cap | Up Case) <n> = {Shift+Right_$2} HeardWord(\All-Caps,That);

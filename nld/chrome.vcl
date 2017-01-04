@@ -4,6 +4,7 @@
 # 
 
 include ..\Unimacro.vch;
+
 # Voice commands for chrome, depends on Vimium Extension
 #
 
@@ -16,11 +17,11 @@ paste address			= {ctrl+l}{ctrl+v}{enter};
 #
 # navigeren met tabbladen
 #
-(nieuw tabblad|new tab) = {ctrl+t};
+(nieuw tabblad|new tab) = {ctrl+t} google.nl {Enter};
 (sluit tabblad | tabblad sluiten) = {Ctrl+w};
 (vorig tabblad|previous tab) = {Ctrl+Shift+Tab};
 (volgend tabblad| next tab) = {Ctrl+Tab};
-(pagina herladen|herlaad pagina|reload page |page reload) ="r";
+(pagina herladen|herlaad pagina|reload page |page reload) = {Ctrl+r};
 tabblad [1..9] = {Ctrl+$1};
 
 #
@@ -34,40 +35,38 @@ tabblad [1..9] = {Ctrl+$1};
 # Zie:  https://guides.agilebits.com/1password-windows/4/en/topic/keyboard-shortcuts
 #
 1password = {Ctrl+\};
+broncode = {Ctrl+u};
+ga terug = {Backspace};
 
 
-view source = "gs";
-find mode = "/";
-open link = "gg";
-go back = "H";
-go forward = "L";
-open URL ="O";
-help = "?";
+#find mode = "/";
+#open link = "gg";
+#go back = "H";
+#go forward = "L";
+#open URL ="O";
+#help = "?";
 
-# GMail - Dutch Commands:
-# Vimium is disabled for gmail.com
+#
+# Google Inbox
 #
 
-Mail van:
+Inbox:
 
 (opstellen | nieuwe e-mail | nieuw bericht | new message)		= "c";
-map verzonden berichten 								= "gt";
-(open inbox | inbox | map inbox | inbox map)				= "gi";
-(map alle berichten | all messages) 						= "ga";
-(open e-mail | open bericht )							= "o";
-([bericht] archiveren | archive) 							= "{";
-([bericht] doorsturen | forward)							= "gf";
+(open inbox | inbox | map inbox | inbox map)				= "i" Wait(100) "j";
+(open gesnoozed)									= "i" Wait(100) {Shift+m} Wait(100) {Down} Wait(100) {Enter} {Right};
+(open archief)									= "i" Wait(100) {Shift+m} Wait(100) {Down} {Down} Wait(100) {Enter} {Right};
+(open bericht | bericht openen | open e-mail)							= "o";
+(sluit bericht | bericht sluiten)			                                = "u";
+([bericht] archiveren | archive) 							= "e";
+([bericht] doorsturen | forward)							= "f";
 (allen beantwoorden  | reply all )                  				= "a";
-([bericht] beantwoorden | e-mail beantwoorden | reply)		= "r";
-(vorig bericht | vorige e-mail |previous)					= "j";
-(volgend bericht	| volgende e-mail | next)					= "k";
+([bericht] beantwoorden | e-mail beantwoorden | reply)		        = "r";
+(vorig bericht | vorige e-mail | previous)					= "k";
+(volgend bericht	| volgende e-mail | next)					= "j";
 (bericht verwijderen| delete e-mail | verwijder bericht | e-mail verwijderen | delete email)	= "#";
 (verzend e-mail | e-mail verzenden | bericht verzenden | sent message)					= {Ctrl+Enter};
-toevoegen als taak = "gf" Wait(100) "me@wunderlist.com" Wait(200) {Tab} Wait(200) {Tab} Wait(100) {Down_12} {Shift+Ctrl+Home}{Del};
 
-Wunderlist:
-testcommando = "zandstorm";
-
-
+## toevoegen als taak = "gf" Wait(100) "me@wunderlist.com" Wait(200) {Tab} Wait(200) {Tab} Wait(100) {Down_12} {Shift+Ctrl+Home}{Del};
 
 

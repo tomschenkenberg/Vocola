@@ -4,22 +4,21 @@ include ..\Unimacro.vch;
 
 # quick directories
 
-<shortcut_directory> := (werkprojecten 	= "E:\GoogleDrive\Work-Projects"
-| Google drive  			= "E:\GoogleDrive"
-| Dropbox 				= E:\Dropbox
-| Onedrive                         = E:\OneDrive
+<shortcut_directory> := (
+  Google drive  			= "C:\Users\tom\Google Drive"
+| Dropbox 			= "C:\Users\tom\Dropbox"
+| Onedrive                         = "C:\Users\tom\OneDrive"
 | downloads                       = downloads
-| vocola                             = E:\Dropbox\Documents\Vocola\nld
-| offertes                           = "E:\GoogleDrive\Ibuildings\IB-Opportunities-Tom en Joni");
+| vocola                             = C:\Users\tom\Dropbox\Documents\Vocola\nld
+| offertes                           = "C:\Users\tom\Google Drive\Ibuildings\Sales Opportunities");
 
 folder <shortcut_directory> =
 {Alt+d}
 Wait(200)
 $1
 {Enter}
-Wait(100){Tab}
-Wait(100){Tab}
-Wait(100){Tab};
+Wait(100){Down}
+Wait(100){Up};
 
 
 
